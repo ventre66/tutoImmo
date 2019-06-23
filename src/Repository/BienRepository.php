@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Bien;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Bien|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,6 +19,31 @@ class BienRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Bien::class);
     }
+
+    private function findVisibleQuery(): QueryBuilder
+    {
+        return $this->createQueryBuilder('b')
+            ->where('b.vendu = false');
+    }
+
+    public function findAllVisible()
+    {
+        return $this->findVisibleQuery()
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function findLatest(): array
+    {
+        return $this->findVisibleQuery()
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+    }
+
 
     // /**
     //  * @return Bien[] Returns an array of Bien objects
