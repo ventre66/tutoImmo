@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Mon agence' %}
+
+{% block body %}
+    <div class="jumbotron text-center">
+        <h1>Mon agence</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi architecto earum hic illo impedit nemo ut? A asperiores consectetur corporis, cumque dolore doloribus exercitationem ipsa ipsam maiores minima saepe sapiente.</p>
+    </div>
+    <div class="container">
+        <h2>Les dérniers biens</h2>
+        <div class="rox flex">
+            {% for bien in biens %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="#">{{ bien.titre }}</a>
+                            </h5>
+                            <p class="card-text">{{ bien.ville }} ({{ bien.codePostal }})</p>
+                            <div class="text-primary">{{ bien.formatPrix }} €</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
