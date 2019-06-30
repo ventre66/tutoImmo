@@ -18,7 +18,7 @@ class BienImmobilierController extends AbstractController
 {
     /**
      * @return Response
-     * @Route("/biens", name="bien")
+     * @Route("/biens", name="bien.index")
      */
     public function index(): Response
     {
