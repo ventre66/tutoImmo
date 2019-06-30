@@ -203,6 +203,11 @@ class Bien
         return $this;
     }
 
+    public function getChauffageType(): string
+    {
+        return self::HEAT[$this->chauffage];
+    }
+
     public function getVille(): ?string
     {
         return $this->ville;

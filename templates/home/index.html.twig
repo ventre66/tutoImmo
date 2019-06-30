@@ -15,7 +15,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="#">{{ bien.titre }}</a>
+                                <a href="{{ path('bien_visualiser', {id: bien.id, slug: bien.slug}) }}">{{ bien.titre }}</a>
                             </h5>
                             <p class="card-text">{{ bien.ville }} ({{ bien.codePostal }})</p>
                             <div class="text-primary">{{ bien.formatPrix }} €</div>
